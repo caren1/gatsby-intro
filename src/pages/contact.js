@@ -9,7 +9,7 @@ const ContactPage = () => {
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, nisi!
       </p>
-      <a href="https://twitter.com" target="_blank">
+      <a href="https://twitter.com">
         Twitter
       </a>
     </Layout>
