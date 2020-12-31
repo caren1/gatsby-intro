@@ -1,12 +1,10 @@
 import React from "react"
 
-import Footer from "../components/footer"
-import Header from "../components/header"
+import Layout from "../components/layout"
 
 const ContactPage = () => {
   return (
-    <div>
-      <Header />
+    <Layout>
       <h1>Contact</h1>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, nisi!
@@ -14,8 +12,7 @@ const ContactPage = () => {
       <a href="https://twitter.com" target="_blank">
         Twitter
       </a>
-      <Footer />
-    </div>
+    </Layout>
   )
 }
 
