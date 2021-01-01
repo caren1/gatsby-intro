@@ -1,10 +1,28 @@
 import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
-const Blog = () => {
+// we need dynamic graphql query to return us the appropriate data
+export const query = graphql`
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        date
+      }
+      html
+    }
+  }
+`
+
+const Blog = props => {
   return (
     <Layout>
-        hello
+      <h1>{props.data.markdownRemark.frontmatter.title}</h1>
+      <p>{props.data.markdownRemark.frontmatter.date}</p>
+      <div
+        dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}
+      ></div>
     </Layout>
   )
 }
