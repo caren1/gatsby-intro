@@ -4,6 +4,8 @@ date: "2021-01-01"
 ---
 I just launched a new bootcamp!
 
+![image]("./image.jpg")
+
 ## Topics Covered
 
 1. Gatsby
