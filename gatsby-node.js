@@ -14,17 +14,18 @@
 
 const path = require("path")
 
-module.exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions
+// used only for generating the slug for posts 
+// module.exports.onCreateNode = ({ node, actions }) => {
+//   const { createNodeField } = actions
 
-  if (node.internal.type === "MarkdownRemark") {
-    const slug = path.basename(node.fileAbsolutePath, ".md")
-    // console.log(JSON.stringify(node, undefined, 4));
-    // console.log(slag);
-    // in this way we achieve goal1 to create a slug for each post
-    createNodeField({ node, name: "slug", value: slug })
-  }
-}
+//   if (node.internal.type === "MarkdownRemark") {
+//     const slug = path.basename(node.fileAbsolutePath, ".md")
+//     // console.log(JSON.stringify(node, undefined, 4));
+//     // console.log(slag);
+//     // in this way we achieve goal1 to create a slug for each post
+//     createNodeField({ node, name: "slug", value: slug })
+//   }
+// }
 
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -32,26 +33,37 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // 1 - get path to template - absolute path from harddrive
   const blogtemplate = path.resolve(`./src/templates/blog.js`)
   // 2 - get markdown data
+  // const response = await graphql(`
+  //   query {
+  //     allMarkdownRemark {
+  //       edges {
+  //         node {
+  //           fields {
+  //             slug
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
   const response = await graphql(`
-    query {
-      allMarkdownRemark {
-        edges {
-          node {
-            fields {
+      query {
+        allContentfulBlogPost {
+          edges{
+            node{
               slug
             }
           }
         }
       }
-    }
   `)
   // 3 - create new pages
-  response.data.allMarkdownRemark.edges.forEach(edge => {
+  response.data.allContentfulBlogPost.edges.forEach((edge) => {
     createPage({
       component: blogtemplate,
-      path: `/blog/${edge.node.fields.slug}`,
+      path: `/blog/${edge.node.slug}`,
       context: {
-        slug: edge.node.fields.slug,
+        slug: edge.node.slug,
       },
     })
   })
