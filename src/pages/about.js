@@ -1,4 +1,6 @@
 import React from "react"
+import Head from '../components/head'
+
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -6,6 +8,7 @@ import Layout from "../components/layout"
 const AboutPage = () => {
   return (
     <Layout>
+      <Head title="About"/>
       <h1>About Us</h1>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio

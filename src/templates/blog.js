@@ -2,6 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Layout from "../components/layout"
+import Head from '../components/head'
+
 
 // we need dynamic graphql query to return us the appropriate data
 // export const query = graphql`
@@ -44,6 +46,7 @@ const Blog = props => {
 
   return (
     <Layout>
+      <Head title={props.data.contentfulBlogPost.title}/>
       {/* // v1 with markdown */}
       {/* <h1>{props.data.markdownRemark.frontmatter.title}</h1>
       <p>{props.data.markdownRemark.frontmatter.date}</p>

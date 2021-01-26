@@ -8,6 +8,7 @@ import { Link } from "gatsby"
 // import Footer from "../components/footer"
 // import Header from "../components/header"
 import Layout from '../components/layout'
+import Head from '../components/head'
 
 const IndexPage = () => {
   // return (
@@ -23,6 +24,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
+      <Head title="Home"/>
       <h1>Hello</h1>
        <h2>I'm Wojciech, front-end developer from Gdynia!</h2>
        {/* <a href="/contact">Need a hand? Contact me</a> */}
